@@ -18,21 +18,27 @@ class SignIn extends React.Component {
     }
 
     onSubmitSignIn = () => {
-        fetch('https://floating-garden-97056.herokuapp.com/signin',{
-            method:'post',
-            headers:{'Content-Type' : 'application/json'},
-            body: JSON.stringify({
-                email:this.state.signInEmail,
-                password: this.state.signInPassword
+        if(this.state.signInEmail === '' || this.state.signInPassword === ''){
+            alert("Please complete all the details to Sign In!");
+        } else {
+            fetch('https://floating-garden-97056.herokuapp.com/signin',{
+                method:'post',
+                headers:{'Content-Type' : 'application/json'},
+                body: JSON.stringify({
+                    email:this.state.signInEmail,
+                    password: this.state.signInPassword
+                })
             })
-        })
-        .then(response => response.json())
-        .then(user => {
-            if(user.id){
-                this.props.loadUser(user);
-                this.props.onRouteChange('home');
-            }
-        })
+            .then(response => response.json())
+            .then(user => {
+                if(user.id){
+                    this.props.loadUser(user);
+                    this.props.onRouteChange('home');
+                } else {
+                    alert("Wrong Credentials! Please make sure you have the correct email/password!");
+                }
+            })
+        }
     }
 
     render(){

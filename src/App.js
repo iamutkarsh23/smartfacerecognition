@@ -3,20 +3,20 @@ import Navigation from './Components/Navigation';
 import Logo from './Logo/Logo';
 import ImageLinkForm from './Components/ImageLinkForm/ImageLinkForm';
 import SignIn from './Components/SignIn/Signin';
-import Rank from './Components/Rank/Rank';
+import NumbOfFaces from './Components/NumbOfFaces/NumbOfFaces';
 import Register from './Components/Register/Register';
 import Particles from 'react-particles-js';
-import FaceRecognitionList from './Components/FaceRecognition/FaceRecognitionList';
+import {FaceRecognitionList, numFaces} from './Components/FaceRecognition/FaceRecognitionList';
 import 'tachyons';
 import './App.css';
 
 const particleOptions = {
   particles: {
       number: {
-        value: 150,
+        value: 200,
         density: {
           enable: true,
-          value_area: 800
+          value_area: 1000
         },
         size: {
           value: 3
@@ -156,12 +156,13 @@ class App extends Component{
         {route === 'home'  
         ?  <div>
               <Logo />
-              <Rank name = {this.state.user.name} entries = {this.state.user.entries}/>
+              
               <ImageLinkForm 
               onInputChange={this.onInputChange} 
               onDetectSubmit = {this.onDetectSubmit}
               />
-              <FaceRecognitionList box={box} imageURL={imageURL} />
+              <NumbOfFaces name = {this.state.user.name} entries = {numFaces}/>
+              <FaceRecognitionList name={this.state.user.name} box={box} imageURL={imageURL} />
             </div>
         : (
           route === 'SignIn'

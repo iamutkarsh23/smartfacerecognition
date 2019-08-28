@@ -1,11 +1,15 @@
 import React from 'react';
 import FaceRecognition from './FaceRecognition';
 
-const FaceRecognitionList = ({box, imageURL}) =>{
+var numFaces;
+
+const FaceRecognitionList = ({name, box, imageURL}) =>{
 
     const thisBox = box.map((singlebox,i) => {
         return  <FaceRecognition  key= {i} singlebox = {singlebox}/>
     })
+
+    numFaces = thisBox.length;
 
     return(
         <div className = "center ma">
@@ -18,4 +22,4 @@ const FaceRecognitionList = ({box, imageURL}) =>{
     );
 }
 
-export default FaceRecognitionList;
+export { FaceRecognitionList, numFaces};
