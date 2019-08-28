@@ -6,6 +6,7 @@ import SignIn from './Components/SignIn/Signin';
 import NumbOfFaces from './Components/NumbOfFaces/NumbOfFaces';
 import Register from './Components/Register/Register';
 import Particles from 'react-particles-js';
+import Footer from './Components/Footer/Footer';
 import {FaceRecognitionList, numFaces} from './Components/FaceRecognition/FaceRecognitionList';
 import 'tachyons';
 import './App.css';
@@ -171,6 +172,7 @@ class App extends Component{
           : <div> <Logo /><Register onRouteChange = {this.onRouteChange} loadUser = {this.loadUser}/> </div>
            )  
         }
+        <Footer />
       </div>
     );
   }
